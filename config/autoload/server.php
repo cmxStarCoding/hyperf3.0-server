@@ -71,7 +71,8 @@ return [
             //jsonrpc服务提供者配置
             'name' => 'jsonrpc-http',
             'type' => Server::SERVER_HTTP,
-            'host' => '0.0.0.0',
+//            'host' => '0.0.0.0',
+            'host' => env("CONSUL_HOST",'0.0.0.0'),
             'port' => 9504,
             'sock_type' => SWOOLE_SOCK_TCP,
             'callbacks' => [
