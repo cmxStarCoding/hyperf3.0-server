@@ -4,20 +4,20 @@ return [
         // 开启服务发现
         'discovery' => true,
         // 开启服务注册
-        'register' => true,
+        'register' => false,
     ],
     // 服务提供者相关配置
     'providers' => [],
     // 服务驱动相关配置
     'drivers' => [
-//        'consul' => [
-//            'uri' => env("CONSUL_HOST").':8500',//consul服务的位置
-//            'token' => '',
-//            'check' => [
-//                'deregister_critical_service_after' => '90m',
-//                'interval' => '1s',
-//            ],
-//        ],
+        'consul' => [
+            'uri' => env("CONSUL_HOST").':8500',//consul服务的位置
+            'token' => '',
+            'check' => [
+                'deregister_critical_service_after' => '90m',
+                'interval' => '1s',
+            ],
+        ],
         'nacos' => [
             // nacos server url like https://nacos.hyperf.io, Priority is higher than host:port
             // 'url' => '',
