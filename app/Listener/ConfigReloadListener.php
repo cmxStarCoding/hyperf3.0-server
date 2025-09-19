@@ -26,9 +26,12 @@ class ConfigReloadListener implements ListenerInterface
     public function process(object $event): void
     {
         var_dump("配置变更",$event);
-        $server = ServerManager::get('http');
-        if ($server) {
-            $server->reload();
+        // 遍历你所有 server name
+        foreach (['http', 'tcp', 'ws'] as $name) {
+            $serverInfo = ServerManager::get($name);
+            if (is_array($serverInfo) && isset($serverInfo['server']) && $serverInfo['server'] instanceof \Swoole\Server) {
+                $serverInfo['server']->reload();
+            }
         }
     }
 }
