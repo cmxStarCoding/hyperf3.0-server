@@ -54,6 +54,7 @@ class IsOnlineMaintenanceCrontab
 
     public function isEnable(): bool
     {
+        return false;
         return env('APP_ENV', "prod") == "prod";
     }
 }
