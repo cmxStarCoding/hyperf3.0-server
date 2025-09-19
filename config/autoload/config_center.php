@@ -15,7 +15,7 @@ return [
             'packer' => Hyperf\Utils\Packer\JsonPacker::class,
             // 需要同步的数据前缀
             'namespaces' => [
-                '/application',
+                '/conf/98c6f2c2287f4c73cea3d40ae7ec3ff2/',
             ],
             // `Etcd` 与 `Config` 的映射关系。映射中不存在的 `key`，则不会被同步到 `Config` 中
             'mapping' => [
