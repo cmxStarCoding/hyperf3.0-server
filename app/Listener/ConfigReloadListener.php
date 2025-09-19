@@ -25,6 +25,7 @@ class ConfigReloadListener implements ListenerInterface
 
     public function process(object $event): void
     {
+        var_dump("配置变更",$event);
         $server = ServerManager::get('http');
         if ($server) {
             $server->reload();
