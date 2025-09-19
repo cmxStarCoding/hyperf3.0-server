@@ -30,7 +30,8 @@ class ConfigReloadListener implements ListenerInterface
         foreach (['http', 'tcp', 'ws'] as $name) {
             $serverInfo = ServerManager::get($name);
             if (is_array($serverInfo) && isset($serverInfo['server']) && $serverInfo['server'] instanceof \Swoole\Server) {
-                $serverInfo['server']->reload();
+                $result = $serverInfo['server']->reload();
+                var_dump("配置变更,{$name}服务重启结果",$result);
             }
         }
     }
