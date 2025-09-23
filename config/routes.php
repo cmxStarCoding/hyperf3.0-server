@@ -23,3 +23,6 @@ Router::addServer('grpc', function () {
     });
 });
 
+Router::addServer('ws', function () {
+    Router::get('/', 'App\Controller\WebSocketController');
+});

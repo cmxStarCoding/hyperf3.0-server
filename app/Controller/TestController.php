@@ -18,12 +18,18 @@ use Hyperf\Di\Annotation\Inject;
 
 use function Hyperf\Config\config;
 use function \Hyperf\Support\env;
+use Hyperf\WebSocketServer\Sender;
 
 #[Controller(prefix: "/test")]
 class TestController extends AbstractController
 {
     #[Inject]
     public MessageLogic $messageLogic;
+    /**
+     * @var Sender
+     */
+    #[Inject]
+    protected $sender;
 
     #[RequestMapping(path: "index", methods: "get,post")]
     public function postText()
@@ -35,4 +41,37 @@ class TestController extends AbstractController
             "app_name" => env('APP_NAME'),
         ];
     }
+
+    #[RequestMapping(path: "close_ws", methods: "get,post")]
+    public function close()
+    {
+        $params = $this->request->getParsedBody();
+
+        $fd = (int)$params['fd'] ?? 0;
+        var_dump("获取到的fd为", $fd);
+
+        go(function () use ($fd) {
+            sleep(1);
+            $this->sender->disconnect($fd);
+        });
+
+        return [];
+    }
+
+    #[RequestMapping(path: "sen_ws_msg", methods: "get,post")]
+    public function send()
+    {
+        $params = $this->request->getParsedBody();
+
+        $fd = (int)$params['fd'] ?? 0;
+        var_dump("获取到的fd为", $fd);
+
+
+        var_dump("获取到的fd为", $fd);
+
+        $this->sender->push($fd, 'Hello World.');
+
+        return [];
+    }
+
 }

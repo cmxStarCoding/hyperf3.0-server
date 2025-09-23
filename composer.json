@@ -42,6 +42,7 @@
         "hyperf/service-governance": "^3.0",
         "hyperf/service-governance-consul": "^3.0",
         "hyperf/service-governance-nacos": "^3.0",
+        "hyperf/websocket-server": "^3.0",
         "monolog/monolog": "^2.0"
     },
     "require-dev": {

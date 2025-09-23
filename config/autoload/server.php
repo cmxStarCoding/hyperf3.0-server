@@ -78,6 +78,19 @@ return [
                 Event::ON_REQUEST => [\Hyperf\JsonRpc\HttpServer::class, 'onRequest'],
             ],
         ],
+        [
+            'name' => 'ws',
+            'type' => Server::SERVER_WEBSOCKET,
+            'host' => '0.0.0.0',
+            'port' => 9505,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                Event::ON_HAND_SHAKE => [Hyperf\WebSocketServer\Server::class, 'onHandShake'],
+                Event::ON_MESSAGE => [Hyperf\WebSocketServer\Server::class, 'onMessage'],
+                Event::ON_CLOSE => [Hyperf\WebSocketServer\Server::class, 'onClose'],
+            ],
+        ],
+
     ],
     'settings' => [
         Constant::OPTION_ENABLE_COROUTINE => true,
