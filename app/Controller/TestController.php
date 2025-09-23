@@ -16,6 +16,8 @@ use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\Di\Annotation\Inject;
 
+use function Hyperf\Config\config;
+
 #[Controller(prefix: "/test")]
 class TestController extends AbstractController
 {
@@ -25,8 +27,10 @@ class TestController extends AbstractController
     #[RequestMapping(path: "index", methods: "get,post")]
     public function postText()
     {
+        $configStr = config('nacos_config');  // JSON 字符串
+        $configArr = json_decode($configStr, true);  // 转成数组
         return [
-            "config" => config("im-api"),
+            "config" => $configArr,
         ];
     }
 }

@@ -7,7 +7,7 @@ use Hyperf\ConfigCenter\Mode;
 
 return [
     'enable' => (bool) env('CONFIG_CENTER_ENABLE', true),
-    'driver' => env('CONFIG_CENTER_DRIVER', 'etcd'),
+    'driver' => env('CONFIG_CENTER_DRIVER', 'nacos'),
     'mode' => env('CONFIG_CENTER_MODE', Mode::PROCESS),
     'drivers' => [
         'etcd' => [
@@ -39,6 +39,36 @@ return [
                     'timeout' => 10,
                 ],
             ],
-        ]
+        ],
+        'nacos' => [
+            'driver' => Hyperf\ConfigNacos\NacosDriver::class,
+            'merge_mode' => Hyperf\ConfigNacos\Constants::CONFIG_MERGE_OVERWRITE,
+            'interval' => 3,
+            'default_key' => 'nacos_config',
+            'listener_config' => [
+                'nacos_config' => [
+                    'tenant' => '31a036a4-8629-46d4-ad34-fd0b8b40138c', // corresponding with service.namespaceId
+                    'data_id' => '456',
+                    'group' => 'DEFAULT_GROUP',
+                ],
+            ],
+            'client' => [
+                // nacos server url like https://nacos.hyperf.io, Priority is higher than host:port
+                // 'uri' => '',
+                'host' => '10.200.15.106',
+                'port' => 8848,
+                'username' => null,
+                'password' => null,
+                'guzzle' => [
+                    'config' => null,
+                ],
+                // Only support for nacos v2.
+                'grpc' => [
+                    'enable' => true,
+                    'heartbeat' => 10,
+                ],
+            ],
+        ],
+
     ],
 ];
