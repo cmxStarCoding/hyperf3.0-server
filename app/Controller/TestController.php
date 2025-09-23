@@ -17,6 +17,7 @@ use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\Di\Annotation\Inject;
 
 use function Hyperf\Config\config;
+use function \Hyperf\Support\env;
 
 #[Controller(prefix: "/test")]
 class TestController extends AbstractController
@@ -31,6 +32,7 @@ class TestController extends AbstractController
         $configArr = json_decode($configStr, true);  // 转成数组
         return [
             "config" => $configArr,
+            "app_name" => env('APP_NAME'),
         ];
     }
 }

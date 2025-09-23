@@ -32,7 +32,7 @@ return [
             ],
             'group_name' => 'DEFAULT_GROUP',
 //            'namespace_id' => 'namespace_id',
-            'namespace_id' => 'b1738c1a-0194-49e3-b118-6716a6de622b',
+            'namespace_id' => '31a036a4-8629-46d4-ad34-fd0b8b40138c',
             'heartbeat' => 5,
             'ephemeral' => false, // 是否注册临时实例
         ],
