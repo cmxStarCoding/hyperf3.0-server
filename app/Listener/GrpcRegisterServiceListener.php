@@ -44,6 +44,7 @@ class GrpcRegisterServiceListener implements ListenerInterface
                     'ip' => $host,
                     'port' => $port,
                     'groupName' => 'DEFAULT_GROUP',
+                    'namespaceId' => '31a036a4-8629-46d4-ad34-fd0b8b40138c',
                     'ephemeral' => false,
                 ],
             ]);

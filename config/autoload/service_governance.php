@@ -3,11 +3,11 @@
 //针对的是RpcServer 或 JsonRpcServer）
 
 return [
-//    'enable' => [
-//        'register' => true,
-//        'discovery' => true,
-//    ],
-//    'drivers' => [
+    'enable' => [
+        'register' => true,
+        'discovery' => true,
+    ],
+    'drivers' => [
 //        'consul' => [
 //            'driver' => Hyperf\ServiceGovernanceConsul\ConsulDriver::class,
 //            'config' => [
@@ -24,16 +24,16 @@ return [
 //                ],
 //            ],
 //        ],
-//        'nacos' => [
-//            'host' => '10.200.15.106',   // 容器名或宿主机 IP
-//            'port' => 8848,
-//            'namespace_id' => '31a036a4-8629-46d4-ad34-fd0b8b40138c',
-//            'group_name' => 'DEFAULT_GROUP',
-//            'ephemeral' => false,
-//            'heartbeat' => 5,
-//            'guzzle' => [
-//                'config' => null,
-//            ],
-//        ],
-//    ],
+        'nacos' => [
+            'host' => '10.200.15.106',   // 容器名或宿主机 IP
+            'port' => 8848,
+            'namespace_id' => '31a036a4-8629-46d4-ad34-fd0b8b40138c',
+            'group_name' => 'DEFAULT_GROUP',
+            'ephemeral' => false,
+            'heartbeat' => 5,
+            'guzzle' => [
+                'config' => null,
+            ],
+        ],
+    ],
 ];
