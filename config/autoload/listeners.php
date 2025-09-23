@@ -13,4 +13,5 @@ return [
     Hyperf\ExceptionHandler\Listener\ErrorExceptionHandler::class,
     Hyperf\Command\Listener\FailToHandleListener::class,
 //    App\Listener\ConfigReloadListener::class,
+    App\Listener\GrpcRegisterServiceListener::class,
 ];
