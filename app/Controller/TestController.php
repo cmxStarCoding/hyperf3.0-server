@@ -17,7 +17,7 @@ use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\Di\Annotation\Inject;
 
 use function Hyperf\Config\config;
-use function \Hyperf\Support\env;
+use function Hyperf\Support\env;
 use Hyperf\WebSocketServer\Sender;
 
 #[Controller(prefix: "/test")]
