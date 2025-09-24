@@ -1,6 +1,7 @@
 <?php
 
 //针对的是RpcServer 或 JsonRpcServer）
+use function Hyperf\Support\env;
 
 return [
     'enable' => [
@@ -25,10 +26,10 @@ return [
 //            ],
 //        ],
         'nacos' => [
-            'host' => '10.200.15.106',   // 容器名或宿主机 IP
-            'port' => 8848,
-            'namespace_id' => '31a036a4-8629-46d4-ad34-fd0b8b40138c',
-            'group_name' => 'DEFAULT_GROUP',
+            'host' => env('NACOS_HOST', '127.0.0.1'),   // 容器名或宿主机 IP
+            'port' => env('NACOS_PORT', 8848),
+            'namespace_id' => env('NACOS_NAMESPACE_ID', 'public'),
+            'group_name' => env('NACOS_GROUP', 'DEFAULT_GROUP'),
             'ephemeral' => false,
             'heartbeat' => 5,
             'guzzle' => [

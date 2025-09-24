@@ -15,6 +15,7 @@ use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\GetMapping;
 use Hyperf\ServiceGovernanceNacos\NacosDriver;
 use Psr\Container\ContainerInterface;
+use function Hyperf\Support\env;
 
 #[Controller]
 class IndexController extends AbstractController
@@ -34,7 +35,6 @@ class IndexController extends AbstractController
         $node = $nodes[array_rand($nodes)];
         $target = $node['host'] . ':' . $node['port'];
 
-//        return ["target" => $target];
 
         //这里的ip可改写为从nacos获取到的服务地址和ip
         $client = new \App\Grpc\HiClient($target, [
@@ -53,8 +53,8 @@ class IndexController extends AbstractController
         $message = $reply->getMessage();
         $user = $reply->getUser();
 
-        var_dump(memory_get_usage(true));
-        return $message;
+//        var_dump(memory_get_usage(true));
+        return ['message' => $message, 'user' => $user, "host" => gethostbyname('host.docker.internal')];
 
 
     }

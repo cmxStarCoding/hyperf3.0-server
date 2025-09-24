@@ -8,7 +8,7 @@ use Hyperf\Event\Contract\ListenerInterface;
 use Hyperf\Framework\Event\AfterWorkerStart;
 use Hyperf\Guzzle\ClientFactory;
 use Psr\Container\ContainerInterface;
-
+use function Hyperf\Support\env;
 class GrpcRegisterServiceListener implements ListenerInterface
 {
     public function __construct(private ContainerInterface $container)
@@ -33,7 +33,7 @@ class GrpcRegisterServiceListener implements ListenerInterface
         $port = 9503;
         $serviceName = $grpcConfig['service_name'] ?? 'grpc_service';
         $client = $this->container->get(ClientFactory::class)->create([
-            'base_uri' => "http://10.200.15.106:8848/nacos/v1/ns/",
+            'base_uri' => "http://" . env('NACOS_HOST', '127.0.0.1') . ":" . env('NACOS_PORT', 8848) . "/nacos/v1/ns/",
             'timeout' => 5,
         ]);
 
@@ -43,8 +43,8 @@ class GrpcRegisterServiceListener implements ListenerInterface
                     'serviceName' => $serviceName,
                     'ip' => $host,
                     'port' => $port,
-                    'groupName' => 'DEFAULT_GROUP',
-                    'namespaceId' => '31a036a4-8629-46d4-ad34-fd0b8b40138c',
+                    'groupName' => env('NACOS_GROUP', 'DEFAULT_GROUP'),
+                    'namespaceId' => env('NACOS_NAMESPACE_ID', 'public'),
                     'ephemeral' => false,
                 ],
             ]);
