@@ -1,4 +1,7 @@
 <?php
+
+
+use function Hyperf\Support\env;
 return [
     'enable' => [
         // 开启服务发现
