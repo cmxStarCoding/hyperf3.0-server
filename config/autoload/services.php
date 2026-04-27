@@ -5,9 +5,9 @@ use function Hyperf\Support\env;
 return [
     'enable' => [
         // 开启服务发现
-        'discovery' => true,
+        'discovery' => false,
         // 开启服务注册
-        'register' => true,
+        'register' => false,
     ],
     // 服务提供者相关配置
     'providers' => [],

@@ -77,7 +77,10 @@
     "prefer-stable": true,
     "config": {
         "optimize-autoloader": true,
-        "sort-packages": true
+        "sort-packages": true,
+        "audit": {
+            "block-insecure": false
+        }
     },
     "extra": [],
     "scripts": {

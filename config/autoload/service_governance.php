@@ -25,16 +25,16 @@ return [
 //                ],
 //            ],
 //        ],
-        'nacos' => [
-            'host' => env('NACOS_HOST', '127.0.0.1'),   // 容器名或宿主机 IP
-            'port' => env('NACOS_PORT', 8848),
-            'namespace_id' => env('NACOS_NAMESPACE_ID', 'public'),
-            'group_name' => env('NACOS_GROUP', 'DEFAULT_GROUP'),
-            'ephemeral' => false,
-            'heartbeat' => 5,
-            'guzzle' => [
-                'config' => null,
-            ],
-        ],
+//        'nacos' => [
+//            'host' => env('NACOS_HOST', '127.0.0.1'),   // 容器名或宿主机 IP
+//            'port' => env('NACOS_PORT', 8848),
+//            'namespace_id' => env('NACOS_NAMESPACE_ID', 'public'),
+//            'group_name' => env('NACOS_GROUP', 'DEFAULT_GROUP'),
+//            'ephemeral' => false,
+//            'heartbeat' => 5,
+//            'guzzle' => [
+//                'config' => null,
+//            ],
+//        ],
     ],
 ];
