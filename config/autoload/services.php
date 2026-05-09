@@ -21,23 +21,23 @@ return [
 //                'interval' => '1s',
 //            ],
 //        ],
-        'nacos' => [
+//        'nacos' => [
             // nacos server url like https://nacos.hyperf.io, Priority is higher than host:port
             // 'url' => '',
             // The nacos host info
-            'host' => env('NACOS_HOST', '127.0.0.1'),
-            'port' => env('NACOS_PORT', 8848),
+//            'host' => env('NACOS_HOST', '127.0.0.1'),
+//            'port' => env('NACOS_PORT', 8848),
             // The nacos account info
-            'username' => null,
-            'password' => null,
-            'guzzle' => [
-                'config' => null,
-            ],
-            'group_name' => env('NACOS_GROUP', 'DEFAULT_GROUP'),
+//            'username' => null,
+//            'password' => null,
+//            'guzzle' => [
+//                'config' => null,
+//            ],
+//            'group_name' => env('NACOS_GROUP', 'DEFAULT_GROUP'),
 //            'namespace_id' => 'namespace_id',
-            'namespace_id' => env('NACOS_NAMESPACE_ID', 'public'),
-            'heartbeat' => 5,
-            'ephemeral' => false, // 是否注册临时实例
-        ],
+//            'namespace_id' => env('NACOS_NAMESPACE_ID', 'public'),
+//            'heartbeat' => 5,
+//            'ephemeral' => false, // 是否注册临时实例
+//        ],
     ],
 ];

@@ -8,7 +8,7 @@ use Hyperf\ConfigCenter\Mode;
 use function Hyperf\Support\env;
 
 return [
-    'enable' => (bool) env('CONFIG_CENTER_ENABLE', true),
+    'enable' => (bool) env('CONFIG_CENTER_ENABLE', false),
     'driver' => env('CONFIG_CENTER_DRIVER', 'nacos'),
     'mode' => env('CONFIG_CENTER_MODE', Mode::PROCESS),
     'drivers' => [
