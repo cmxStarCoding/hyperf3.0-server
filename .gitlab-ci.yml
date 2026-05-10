@@ -2,7 +2,7 @@
 
 stages:
   - build
-  - deploy
+  - docker
 
 variables:
   PROJECT_NAME: hyperf
@@ -23,9 +23,9 @@ build_test_docker:
     - builder
 
 deploy_test_docker:
-  stage: deploy
+  stage: docker
   script:
-    - docker stack deploy -c deploy.test.yml --with-registry-auth $PROJECT_NAME
+    - docker stack docker -c docker.test.yml --with-registry-auth $PROJECT_NAME
   only:
     - test
   tags:
@@ -48,7 +48,7 @@ build_docker:
     - builder
 
 deploy_docker:
-  stage: deploy
+  stage: docker
   script:
     - echo SUCCESS
   only:
