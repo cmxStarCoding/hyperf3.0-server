@@ -66,12 +66,12 @@ RUN docker-php-ext-configure gd \
 
 RUN docker-php-ext-install sockets
 
-RUN printf "yes\nyes\nyes\nno\nno\nno\nno\nno\n" | pecl install openswoole-22.1.2 \
-    && docker-php-ext-enable openswoole \
-    && mv /usr/local/etc/php/conf.d/docker-php-ext-openswoole.ini \
-              /usr/local/etc/php/conf.d/zz-docker-php-ext-openswoole.ini
+RUN printf "yes\nyes\nyes\nno\nno\nno\nno\nno\n" | pecl install swoole-5.1.5 \
+    && docker-php-ext-enable swoole \
+    && mv /usr/local/etc/php/conf.d/docker-php-ext-swoole.ini \
+              /usr/local/etc/php/conf.d/zz-docker-php-ext-swoole.ini
 
-RUN echo "openswoole.use_shortname = Off" >> /usr/local/etc/php/conf.d/zz-docker-php-ext-openswoole.ini
+RUN echo "swoole.use_shortname = Off" >> /usr/local/etc/php/conf.d/zz-docker-php-ext-swoole.ini
 
 RUN pecl install redis \
     && docker-php-ext-enable redis
@@ -100,11 +100,11 @@ RUN mkdir -p /etc/supervisor/conf.d \
 
 WORKDIR /var/www
 
-RUN mkdir -p /var/www/storage/logs \
-    && chmod -R 777 /var/www/storage
+RUN mkdir -p /var/www/runtime \
+    && chmod -R 777 /var/www
 
-COPY ./docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY ./docker/supervisord.conf /etc/supervisor/supervisord.conf
 
-EXPOSE 9000
+EXPOSE 9501
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
